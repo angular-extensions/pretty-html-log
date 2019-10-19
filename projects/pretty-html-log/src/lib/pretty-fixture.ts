@@ -1,6 +1,5 @@
-import { highlight } from 'pretty-html-log';
-import { Theme } from 'pretty-html-log';
 import { ComponentFixture } from '@angular/core/testing';
+import { highlight, Theme } from 'pretty-html-log';
 
 export const prettyPrintFixture = <T>(
   fixture: ComponentFixture<T>,
@@ -15,13 +14,3 @@ export const prettyFixture = <T>(
 ): string => {
   return highlight(fixture.debugElement.nativeElement.innerHTML, theme);
 };
-
-(() => {
-  (console as any).logFixture = prettyPrintFixture;
-})();
-
-declare global {
-  interface Console {
-    logFixture: <T>(fixture: ComponentFixture<T>, theme?: Theme) => void;
-  }
-}

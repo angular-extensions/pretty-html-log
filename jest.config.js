@@ -10,9 +10,5 @@ module.exports = {
     }
   },
   preset: 'jest-preset-angular',
-  setupFilesAfterEnv: ['<rootDir>/setupJest.ts'],
-  testPathIgnorePatterns: [
-    '<rootDir>/projects/pretty-html-log/src/test.ts',
-    '<rootDir>/projects/pretty-html-log-showcase/src/test.ts'
-  ]
+  setupFilesAfterEnv: ['<rootDir>/setupJest.ts']
 };

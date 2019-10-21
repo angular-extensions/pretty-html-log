@@ -7,8 +7,8 @@
     "build": "ng build",
     "format:check": "prettier --list-different 'projects/**/*.ts'",
     "format:write": "prettier --write 'projects/**/*.ts'",
-    "test": "jest",
-    "test:showcase": "ng test pretty-html-log-showcase",
+    "test:lib": "jest --config ./projects/pretty-html-log/jest.config.js",
+    "test:showcase": "jest --config ./projects/pretty-html-log-showcase/jest.config.js",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },

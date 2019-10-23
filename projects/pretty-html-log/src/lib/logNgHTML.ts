@@ -1,15 +1,15 @@
 import { ComponentFixture } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
 import { highlight, Theme } from 'pretty-html-log';
-import { prettyPrintFixture } from './pretty-fixture';
+import { prettyPrintFixture } from './prettiers/fixture/pretty-fixture';
 import {
   prettyPrintDebugElement,
   prettyPrintDebugElements
-} from './pretty-debugElement';
+} from './prettiers/debugElement/pretty-debugElement';
 import {
-  prettyPrintHtmlEleemnt,
+  prettyPrintHtmlElement,
   prettyPrintHtmlElements
-} from './pretty-htmlelement';
+} from './prettiers/htmlElement/pretty-htmlelement';
 
 export type NgHTMLElement<T> =
   | ComponentFixture<T>
@@ -23,7 +23,8 @@ export const logNgHTML = <T>(
   theme?: Theme
 ) => {
   if (ngHTMLElement instanceof ComponentFixture) {
-    prettyPrintFixture<T>(ngHTMLElement);
+    console.log('Da');
+    prettyPrintFixture<T>(ngHTMLElement, theme);
     return;
   }
 
@@ -45,7 +46,7 @@ export const logNgHTML = <T>(
   }
 
   if (ngHTMLElement instanceof HTMLElement) {
-    prettyPrintHtmlEleemnt(ngHTMLElement);
+    prettyPrintHtmlElement(ngHTMLElement);
     return;
   }
   console.log(

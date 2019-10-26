@@ -16,41 +16,38 @@ export type NgHTMLElement<T> =
   | DebugElement
   | DebugElement[]
   | HTMLElement
-  | HTMLElement[];
+  | HTMLElement[]
+  | string;
 
 export const logNgHTML = <T>(
   ngHTMLElement: NgHTMLElement<T>,
   theme?: Theme
 ) => {
   if (ngHTMLElement instanceof ComponentFixture) {
-    console.log('Da');
     prettyPrintFixture<T>(ngHTMLElement, theme);
     return;
   }
 
   if (Array.isArray(ngHTMLElement)) {
     if (ngHTMLElement[0] instanceof DebugElement) {
-      prettyPrintDebugElements(ngHTMLElement as DebugElement[]);
+      prettyPrintDebugElements(ngHTMLElement as DebugElement[], theme);
       return;
     }
 
     if (ngHTMLElement[0] instanceof HTMLElement) {
-      prettyPrintHtmlElements(ngHTMLElement as HTMLElement[]);
+      prettyPrintHtmlElements(ngHTMLElement as HTMLElement[], theme);
       return;
     }
   }
 
   if (ngHTMLElement instanceof DebugElement) {
-    prettyPrintDebugElement(ngHTMLElement);
+    prettyPrintDebugElement(ngHTMLElement, theme);
     return;
   }
 
   if (ngHTMLElement instanceof HTMLElement) {
-    prettyPrintHtmlElement(ngHTMLElement);
+    prettyPrintHtmlElement(ngHTMLElement, theme);
     return;
   }
-  console.log(
-    '@angular-extension/pretty-html-log: Unknown type - try to format anyway'
-  );
   console.log(highlight(ngHTMLElement as any, theme));
 };

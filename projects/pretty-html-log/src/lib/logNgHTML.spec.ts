@@ -39,9 +39,9 @@ describe('LogNgHTML', () => {
   });
 
   it('should call prettyPrintFixture incase we provide a component fixture', () => {
-    spyOn(fixturePrettier, 'prettyPrintFixture');
+    spyOn(fixturePrettier, 'fixturePrettier');
     logNgHTML<MockComponent>(fixture, theme);
-    expect(fixturePrettier.prettyPrintFixture).toHaveBeenCalledWith(
+    expect(fixturePrettier.fixturePrettier).toHaveBeenCalledWith(
       fixture,
       theme
     );

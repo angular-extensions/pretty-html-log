@@ -1,7 +1,7 @@
 import { ComponentFixture } from '@angular/core/testing';
 import { highlight, Theme } from 'pretty-html-log';
 
-export const prettyPrintFixture = <T>(
+export const fixturePrettier = <T>(
   fixture: ComponentFixture<T>,
   theme?: Theme
 ): void => {

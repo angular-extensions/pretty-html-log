@@ -1,7 +1,7 @@
 import { ComponentFixture } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
 import { highlight, Theme } from 'pretty-html-log';
-import { prettyPrintFixture } from './prettiers/fixture/pretty-fixture';
+import { fixturePrettier } from './prettiers/fixture/pretty-fixture';
 import {
   prettyPrintDebugElement,
   prettyPrintDebugElements
@@ -24,7 +24,7 @@ export const logNgHTML = <T>(
   theme?: Theme
 ) => {
   if (ngHTMLElement instanceof ComponentFixture) {
-    prettyPrintFixture<T>(ngHTMLElement, theme);
+    fixturePrettier<T>(ngHTMLElement, theme);
     return;
   }
 

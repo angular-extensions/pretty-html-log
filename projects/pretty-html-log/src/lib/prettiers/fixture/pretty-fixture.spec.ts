@@ -1,19 +1,19 @@
-import * as prettyFixture from './pretty-fixture';
-import { prettyPrintFixture } from './pretty-fixture';
-import { DebugElement } from '@angular/core';
-import * as prettyHTMLLog from 'pretty-html-log';
-import { THEMES } from 'pretty-html-log';
 import { ComponentFixture } from '@angular/core/testing';
+import { THEMES } from 'pretty-html-log';
+
+import * as prettyFixture from './pretty-fixture';
+import { fixturePrettier } from './pretty-fixture';
+import * as prettyHTMLLog from 'pretty-html-log';
 
 describe('pretty fixture', () => {
   it('should call prettyFixture with the componentFixture and pass it to console.log', () => {
     console.log = jest.fn();
     const componentFixture = {} as ComponentFixture<any>;
     spyOn(prettyFixture, 'prettyFixture');
-    prettyFixture.prettyPrintFixture(componentFixture, THEMES.DRACULA);
+    prettyFixture.fixturePrettier(componentFixture, THEMES.DRACULA);
 
     expect(console.log).toHaveBeenCalledWith(
-      prettyPrintFixture(componentFixture, THEMES.DRACULA)
+      fixturePrettier(componentFixture, THEMES.DRACULA)
     );
   });
 

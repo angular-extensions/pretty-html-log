@@ -1,7 +1,7 @@
 import { Theme } from 'pretty-html-log';
 import { highlight } from 'pretty-html-log';
 
-export const prettyPrintHtmlEleemnt = (
+export const prettyPrintHtmlElement = (
   htmlElement: HTMLElement,
   theme?: Theme
 ): void => {

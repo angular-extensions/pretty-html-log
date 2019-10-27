@@ -1,6 +1,5 @@
-import { ComponentFixture } from '@angular/core/testing';
 import { Theme } from 'pretty-html-log';
-import { logNgHTML, NgHTMLElement } from './logNgHTML';
+import { logNgHTML } from './logNgHTML';
 
 (() => {
   (console as any).logNgHTML = logNgHTML;

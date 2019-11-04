@@ -73,10 +73,33 @@ describe('GotFamiliesComponent', () => {
 
     targaryenTab.nativeElement.click();
 
-    /*
     fixture.detectChanges();
+    /*
     await fixture.whenStable();
      */
+
+    const actualFamilieMemebersElements = fixture.debugElement.queryAll(
+      By.css('li')
+    );
+    const actualFamilieMembers = actualFamilieMemebersElements.map(
+      (debugElement: DebugElement) => debugElement.nativeElement.innerHTML
+    );
+    expect(actualFamilieMembers).toEqual(targaryens);
+  });
+
+  it(`should display the Targaryen family once we click on the Targaryen tab`, async () => {
+    const targaryens = [
+      'Daenerys Targaryen',
+      'Egon Targaryen',
+      'Rhaegar Targaryen'
+    ];
+
+    const targaryenTab = fixture.debugElement.queryAll(
+      By.css('.mat-tab-label')
+    )[1];
+    targaryenTab.nativeElement.click();
+    fixture.detectChanges();
+    await fixture.whenStable();
 
     const actualFamilieMemebersElements = fixture.debugElement.queryAll(
       By.css('li')

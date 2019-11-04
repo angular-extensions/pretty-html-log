@@ -9,8 +9,10 @@
     "format:write": "prettier --write 'projects/**/*.ts'",
     "test": "npm run test:lib && npm run test:showcase",
     "test:lib": "jest --config ./projects/pretty-html-log/jest.config.js",
+    "test:lib:coverage": "jest --config --coverage ./projects/pretty-html-log/jest.config.js",
     "test:lib:watch": "jest -o --watch --config ./projects/pretty-html-log/jest.config.js",
     "test:showcase": "jest --config ./projects/pretty-html-log-showcase/jest.config.js",
+    "test:showcase:coverage": "jest --coverage --config ./projects/pretty-html-log-showcase/jest.config.js",
     "test:showcase:watch": "jest -o --watch --config ./projects/pretty-html-log-showcase/jest.config.js",
     "lint": "ng lint",
     "e2e": "ng e2e"

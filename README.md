@@ -23,10 +23,36 @@ use this method during tests to pretty print `ComponentFixtures`,
 
 ## Examples
 
+### Pass in specific DebugElement
+
 In your test you can simply write the following line.
 
-![logNgHTML](https://raw.githubusercontent.com/angular-extensions/pretty-html-log/master/images/console.logNgHMTL.png)
+```
+console.logNgHTML(
+    fixture.debugElement.query(By.css('mat-tab-body'))
+)
+```
 
 Which will print the following string to your console
 
 ![logNgHTML](https://raw.githubusercontent.com/angular-extensions/pretty-html-log/master/images/output.png)
+
+### Further examples
+
+Instead of passing in a DebugElement you can also pass in a fixture:
+
+```
+console.logNgHTML(fixture);
+```
+
+or a nativeElement
+
+```
+console.logNgHTML(fixture.debugElement.nativeElement);
+```
+
+or even a simple HTML string
+
+```
+console.logNgHTML('<h1>Foo</h1>');
+```

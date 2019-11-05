@@ -1,5 +1,7 @@
 # @angular-extensions/pretty-html-log
 
+# Work in progress - module not yet published
+
 This module allows you to pretty print the inner HTML
 of `ComponentFixtures`,
 `DebugElements`, `NativeElements` or even plain HTML `strings` to the console.
@@ -10,7 +12,7 @@ This module will only be used during development and can therefore
 be installed as a dev dependency.
 
 ```
-npm i -D @angular-extension/pretty-html-log
+npm i -D @angular-extensions/pretty-html-log
 ```
 
 This module is best used with Angular and Jest. Create a

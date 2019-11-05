@@ -2,6 +2,8 @@
 
 # Work in progress - module not yet published
 
+![logNgHTML](https://raw.githubusercontent.com/angular-extensions/pretty-html-log/master/images/logo.png)
+
 This module allows you to pretty print the inner HTML
 of `ComponentFixtures`,
 `DebugElements`, `NativeElements` or even plain HTML `strings` to the console.

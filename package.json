@@ -1,12 +1,15 @@
 {
   "name": "@angular-extensions/pretty-html-log",
-  "version": "0.0.0",
+  "version": "0.0.0-development",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:lib": "npm run copy:readme && ng build pretty-html-log",
+    "copy:readme": "copyfiles ./README.md ./projects/pretty-html-log",
     "format:check": "prettier --list-different 'projects/**/*.ts'",
     "format:write": "prettier --write 'projects/**/*.ts'",
+    "publish:lib": "npx semantic-release",
     "test": "npm run test:lib && npm run test:showcase",
     "test:lib": "jest --config ./projects/pretty-html-log/jest.config.js",
     "test:lib:coverage": "jest --coverage --config  ./projects/pretty-html-log/jest.config.js",
@@ -16,7 +19,8 @@
     "test:showcase:watch": "jest -o --watch --config ./projects/pretty-html-log-showcase/jest.config.js",
     "report-coverage:lib": "cat ./projects/pretty-html-log/coverage/lcov.info | codecov",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "semantic-release": "semantic-release"
   },
   "private": true,
   "dependencies": {
@@ -41,12 +45,16 @@
     "@angular/cli": "~8.3.9",
     "@angular/compiler-cli": "~8.2.9",
     "@angular/language-service": "~8.2.9",
+    "@semantic-release/changelog": "^3.0.5",
+    "@semantic-release/exec": "^3.3.8",
+    "@semantic-release/git": "^7.0.17",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/jest": "^24.0.19",
     "@types/node": "^8.9.5",
     "codecov": "^3.6.1",
     "codelyzer": "^5.0.0",
+    "copyfiles": "^2.1.1",
     "husky": "^3.0.9",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
@@ -56,6 +64,8 @@
     "prettier": "^1.18.2",
     "pretty-quick": "^2.0.0",
     "protractor": "~5.4.0",
+    "replace-json-property": "^1.4.1",
+    "semantic-release": "^15.13.30",
     "ts-jest": "^24.1.0",
     "ts-node": "~7.0.0",
     "tsickle": "^0.37.0",
@@ -66,5 +76,9 @@
     "hooks": {
       "pre-commit": "pretty-quick --staged"
     }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/angular-extensions/pretty-html-log.git"
   }
 }

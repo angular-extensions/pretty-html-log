@@ -25,8 +25,8 @@ use this method during tests to pretty print `ComponentFixtures`,
 
 In your test you can simply write the following line.
 
-![logNgHTML](https://raw.githubusercontent.com/angular-extensions/pretty-html-log/master/doc/console.logNgHMTL.png)
+![logNgHTML](https://raw.githubusercontent.com/angular-extensions/pretty-html-log/master/images/console.logNgHMTL.png)
 
 Which will print the following string to your console
 
-![logNgHTML](https://raw.githubusercontent.com/angular-extensions/pretty-html-log/master/doc/output.png)
+![logNgHTML](https://raw.githubusercontent.com/angular-extensions/pretty-html-log/master/images/output.png)

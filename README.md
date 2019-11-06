@@ -1,7 +1,5 @@
 # @angular-extensions/pretty-html-log
 
-# Work in progress - module not yet published
-
 ![logNgHTML](https://raw.githubusercontent.com/angular-extensions/pretty-html-log/master/images/logo.png)
 
 This module allows you to pretty print the inner HTML

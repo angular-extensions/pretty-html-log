@@ -19,5 +19,5 @@ jobs:
     - stage: build & publish lib
       script:
         - npm run build:lib
-        #- npm run publish:lib
+        - npm run publish:lib
       if: branch = master

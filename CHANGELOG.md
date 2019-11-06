@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/angular-extensions/pretty-html-log/compare/v1.0.0...v1.0.1) (2019-11-06)
+
+
+### Bug Fixes
+
+* **type:** adjust typo to trigger release ([66604be](https://github.com/angular-extensions/pretty-html-log/commit/66604be0a2b0d8be4e9feb02f23de27f0f47f468))
+
 # 1.0.0 (2019-11-06)
 
 

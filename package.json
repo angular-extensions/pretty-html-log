@@ -1,6 +1,6 @@
 {
   "name": "@angular-extensions/pretty-html-log",
-  "version": "1.0.2",
+  "version": "0.0.0-development",
   "scripts": {
     "adjust-version": "npm-run-all adjust-version:*",
     "adjust-version:lib": "replace-json-property projects/ng-simple-alert/package.json version $VERSION",
@@ -89,8 +89,5 @@
     "url": "https://github.com/angular-extensions/pretty-html-log/issues"
   },
   "license": "MIT",
-  "author": "Kevin Kreuzer <@kreuzerk>",
-  "publishConfig": {
-    "access": "public"
-  }
+  "author": "Kevin Kreuzer <@kreuzerk>"
 }

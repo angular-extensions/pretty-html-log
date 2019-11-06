@@ -1,6 +1,9 @@
 {
   "name": "@angular-extensions/pretty-html-log",
-  "version": "0.0.1",
+  "version": "0.0.0-development",
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "pretty-html-log": "^1.0.6"
   },

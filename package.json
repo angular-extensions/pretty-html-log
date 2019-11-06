@@ -2,6 +2,9 @@
   "name": "@angular-extensions/pretty-html-log",
   "version": "0.0.0-development",
   "scripts": {
+    "adjust-version": "npm-run-all adjust-version:*",
+    "adjust-version:lib": "replace-json-property projects/ng-simple-alert/package.json version $VERSION",
+    "adjust-version:main": "replace-json-property package.json version $VERSION",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",

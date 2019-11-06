@@ -3,5 +3,6 @@
   "dest": "../../dist/pretty-html-log",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+  "whitelistedNonPeerDependencies": ["pretty-html-log"]
 }

@@ -89,5 +89,8 @@
     "url": "https://github.com/angular-extensions/pretty-html-log/issues"
   },
   "license": "MIT",
-  "author": "Kevin Kreuzer <@kreuzerk>"
+  "author": "Kevin Kreuzer <@kreuzerk>",
+  "publishConfig": {
+    "access": "public"
+  }
 }

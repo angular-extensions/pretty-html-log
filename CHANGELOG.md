@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/angular-extensions/pretty-html-log/compare/v1.0.1...v1.0.2) (2019-11-06)
+
+
+### Bug Fixes
+
+* **package:** adjust package.json and trigger a release ([4e31227](https://github.com/angular-extensions/pretty-html-log/commit/4e3122794833ca96cda984b21d303d2e264c630c))
+
 ## [1.0.1](https://github.com/angular-extensions/pretty-html-log/compare/v1.0.0...v1.0.1) (2019-11-06)
 
 

@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/angular-extensions/pretty-html-log/compare/v1.0.2...v1.0.3) (2019-11-06)
+
+
+### Bug Fixes
+
+* **package:** add publish config ([3128b15](https://github.com/angular-extensions/pretty-html-log/commit/3128b156ac563138e3294eec78c578e833b89142))
+
 ## [1.0.2](https://github.com/angular-extensions/pretty-html-log/compare/v1.0.1...v1.0.2) (2019-11-06)
 
 

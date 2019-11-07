@@ -3,7 +3,7 @@
   "version": "0.0.0-development",
   "scripts": {
     "adjust-version": "npm-run-all adjust-version:*",
-    "adjust-version:lib": "replace-json-property projects/ng-simple-alert/package.json version $VERSION",
+    "adjust-version:lib": "replace-json-property projects/pretty-html-log/package.json version $VERSION",
     "adjust-version:main": "replace-json-property package.json version $VERSION",
     "ng": "ng",
     "start": "ng serve",

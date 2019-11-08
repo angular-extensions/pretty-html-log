@@ -4,6 +4,9 @@
 
 This module allows you to pretty print the inner HTML
 of `ComponentFixtures`, `DebugElements`, `NativeElements` or even plain HTML `strings` to the console.
+**This is very useful for debugging Angular component tests in Jest**
+
+![logNgHTML](https://raw.githubusercontent.com/angular-extensions/pretty-html-log/master/images/before-after.png)
 
 ## Getting started
 
@@ -15,8 +18,11 @@ npm i -D @angular-extensions/pretty-html-log
 ```
 
 This module is best used with Angular and Jest. Create a
-`setupJest.ts` file in your `src` directory and import
-`@angular-extension/pretty-html-log`.
+`setupJest.ts` file in your `src` directory and add the following line:
+
+```
+import @angular-extension/pretty-html-log
+```
 
 This import adds a `logNgHTML` method to your console. You can then
 use this method during tests to pretty print `ComponentFixtures`,

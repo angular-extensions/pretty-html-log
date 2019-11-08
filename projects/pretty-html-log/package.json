@@ -10,5 +10,21 @@
   "peerDependencies": {
     "@angular/common": "^8.2.9",
     "@angular/core": "^8.2.9"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/angular-extensions/pretty-html-log.git"
+  },
+  "homepage": "https://github.com/angular-extensions/pretty-html-log#readme",
+  "bugs": {
+    "url": "https://github.com/angular-extensions/pretty-html-log/issues"
+  },
+  "license": "MIT",
+  "author": "Kevin Kreuzer <@kreuzerk>",
+  "keywords": [
+    "Angular",
+    "Jest",
+    "ComponentTests",
+    "Unit testing"
+  ]
 }

@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/angular-extensions/pretty-html-log/compare/v1.0.0...v1.0.1) (2019-11-08)
+
+
+### Bug Fixes
+
+* **metadata:** add missing metadata ([a948d3b](https://github.com/angular-extensions/pretty-html-log/commit/a948d3b978e0c1ab0024add3488a2a185d3467ad))
+
 # 1.0.0 (2019-11-06)
 
 

@@ -21,7 +21,7 @@ This module is best used with Angular and Jest. Create a
 `setupJest.ts` file in your `src` directory and add the following line:
 
 ```
-import @angular-extension/pretty-html-log
+import '@angular-extensions/pretty-html-log'
 ```
 
 This import adds a `logNgHTML` method to your console. You can then

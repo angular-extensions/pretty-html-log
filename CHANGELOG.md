@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/angular-extensions/pretty-html-log/compare/v1.0.2...v1.0.3) (2019-12-04)
+
+
+### Bug Fixes
+
+* **docs:** add import order information to the README ([1382e40](https://github.com/angular-extensions/pretty-html-log/commit/1382e4073ff7adfaf91d8b9c6d97350571370ed5))
+
 ## [1.0.2](https://github.com/angular-extensions/pretty-html-log/compare/v1.0.1...v1.0.2) (2019-11-25)
 
 

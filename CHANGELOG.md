@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/angular-extensions/pretty-html-log/compare/v1.0.1...v1.0.2) (2019-11-25)
+
+
+### Bug Fixes
+
+* **docs:** fix typo ([9cbb502](https://github.com/angular-extensions/pretty-html-log/commit/9cbb502ebcbe18f523cad251f20bd0f3b972edff))
+
 ## [1.0.1](https://github.com/angular-extensions/pretty-html-log/compare/v1.0.0...v1.0.1) (2019-11-08)
 
 

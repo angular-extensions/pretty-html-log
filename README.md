@@ -18,7 +18,7 @@ npm i -D @angular-extensions/pretty-html-log
 ```
 
 This module is best used with Angular and Jest. Create a
-`setupJest.ts` file in your `src` directory and add the following line:
+`setupJest.ts` file in your `src` directory and add the following line **after your jest-preset-angular import. The order can matter**:
 
 ```
 import '@angular-extensions/pretty-html-log'

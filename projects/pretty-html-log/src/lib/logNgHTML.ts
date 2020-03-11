@@ -1,6 +1,7 @@
 import { ComponentFixture } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
-import { highlight, Theme } from 'pretty-html-log';
+import { highlight, Theme, THEMES } from 'pretty-html-log';
+
 import { fixturePrettier } from './prettiers/fixture/pretty-fixture';
 import {
   prettyPrintDebugElement,
@@ -10,6 +11,7 @@ import {
   prettyPrintHtmlElement,
   prettyPrintHtmlElements
 } from './prettiers/htmlElement/pretty-htmlelement';
+import { removeComments } from './prettiers/prettier-util';
 
 export type NgHTMLElement<T> =
   | ComponentFixture<T>
@@ -21,33 +23,49 @@ export type NgHTMLElement<T> =
 
 export const logNgHTML = <T>(
   ngHTMLElement: NgHTMLElement<T>,
-  theme?: Theme
+  enableComments = false,
+  theme = THEMES.DRACULA
 ) => {
   if (ngHTMLElement instanceof ComponentFixture) {
-    fixturePrettier<T>(ngHTMLElement, theme);
+    fixturePrettier<T>(ngHTMLElement, enableComments, theme);
     return;
   }
 
   if (Array.isArray(ngHTMLElement)) {
     if (ngHTMLElement[0] instanceof DebugElement) {
-      prettyPrintDebugElements(ngHTMLElement as DebugElement[], theme);
+      prettyPrintDebugElements(
+        ngHTMLElement as DebugElement[],
+        enableComments,
+        theme
+      );
       return;
     }
 
     if (ngHTMLElement[0] instanceof HTMLElement) {
-      prettyPrintHtmlElements(ngHTMLElement as HTMLElement[], theme);
+      prettyPrintHtmlElements(
+        ngHTMLElement as HTMLElement[],
+        enableComments,
+        theme
+      );
       return;
     }
   }
 
   if (ngHTMLElement instanceof DebugElement) {
-    prettyPrintDebugElement(ngHTMLElement, theme);
+    prettyPrintDebugElement(ngHTMLElement, enableComments, theme);
     return;
   }
 
   if (ngHTMLElement instanceof HTMLElement) {
-    prettyPrintHtmlElement(ngHTMLElement, theme);
+    prettyPrintHtmlElement(ngHTMLElement, enableComments, theme);
     return;
   }
-  console.log(highlight(ngHTMLElement as any, theme));
+  console.log(
+    highlight(
+      enableComments
+        ? (ngHTMLElement as string)
+        : removeComments(ngHTMLElement as string),
+      theme
+    )
+  );
 };

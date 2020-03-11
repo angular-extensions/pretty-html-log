@@ -28,6 +28,24 @@ This import adds a `logNgHTML` method to your console. You can then
 use this method during tests to pretty print `ComponentFixtures`,
 `DebugElements`, `NativeElements` or even plain HTML `strings` .
 
+## API
+
+The `console.logNgHTML()` method has the following signature:
+
+```
+<T>(
+  ngHTMLElement: NgHTMLElement<T>,
+  enableComments = false,
+  theme = THEMES.DRACULA
+)
+```
+
+| Property                        | Description                                                                                                        |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| ngHTMLElement<T>                | Value to extract the html from and pretty print it to the console: ComponentFixture                                | DebugElement | DebugElement[] | HTMLElement | HTMLElement[] | string; |
+| enableComments (default: false) | When set to true we print the generated comments by Angular. For example: <!--bindings={"ng-reflect-ng-for-of":... |
+| theme: (default: DRACULA)       | pretty-html-log themes (DRACULA, VSCODE and MATERIAL)                                                              |
+
 ## Examples
 
 ### Pass in specific DebugElement
@@ -62,4 +80,18 @@ or even a simple HTML string
 
 ```
 console.logNgHTML('<h1>Foo</h1>');
+```
+
+### Print Angular comments
+
+```
+console.logNgHTML(fixture, true);
+```
+
+### Change the theme
+
+```
+import {THEMES} from 'pretty-html-log';
+
+console.logNgHTML(fixture, false, THEMES.VSCODE);
 ```

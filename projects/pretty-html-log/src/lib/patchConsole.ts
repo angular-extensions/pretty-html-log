@@ -7,6 +7,10 @@ import { logNgHTML } from './logNgHTML';
 
 declare global {
   interface Console {
-    logNgHTML: <T>(ngHTMLElement: any, theme?: Theme) => void;
+    logNgHTML: <T>(
+      ngHTMLElement: any,
+      enableComments?: boolean,
+      theme?: Theme
+    ) => void;
   }
 }

@@ -1,6 +1,8 @@
 import * as prettyHTMLLog from 'pretty-html-log';
 import { THEMES } from 'pretty-html-log';
 
+import * as prettierUtil from '../prettier-util';
+
 import * as htmlElementPrettier from './pretty-htmlelement';
 import { prettyPrintHtmlElement } from './pretty-htmlelement';
 
@@ -9,10 +11,14 @@ describe('pretty HTML element', () => {
     console.log = jest.fn();
     const htmlElement = {} as HTMLElement;
     spyOn(htmlElementPrettier, 'prettyHtmlElement');
-    htmlElementPrettier.prettyPrintHtmlElement(htmlElement, THEMES.DRACULA);
+    htmlElementPrettier.prettyPrintHtmlElement(
+      htmlElement,
+      false,
+      THEMES.DRACULA
+    );
 
     expect(console.log).toHaveBeenCalledWith(
-      prettyPrintHtmlElement(htmlElement, THEMES.DRACULA)
+      prettyPrintHtmlElement(htmlElement, false, THEMES.DRACULA)
     );
   });
 
@@ -31,16 +37,20 @@ describe('pretty HTML element', () => {
       htmlElementThree
     ] as HTMLElement[];
     spyOn(htmlElementPrettier, 'prettyHtmlElement');
-    htmlElementPrettier.prettyPrintHtmlElements(htmlElements, THEMES.DRACULA);
+    htmlElementPrettier.prettyPrintHtmlElements(
+      htmlElements,
+      false,
+      THEMES.DRACULA
+    );
 
     expect(console.log).toHaveBeenCalledWith(
-      prettyPrintHtmlElement(htmlElementOne, THEMES.DRACULA)
+      prettyPrintHtmlElement(htmlElementOne, false, THEMES.DRACULA)
     );
     expect(console.log).toHaveBeenCalledWith(
-      prettyPrintHtmlElement(htmlElementTwo, THEMES.DRACULA)
+      prettyPrintHtmlElement(htmlElementTwo, false, THEMES.DRACULA)
     );
     expect(console.log).toHaveBeenCalledWith(
-      prettyPrintHtmlElement(htmlElementThree, THEMES.DRACULA)
+      prettyPrintHtmlElement(htmlElementThree, false, THEMES.DRACULA)
     );
   });
 
@@ -51,9 +61,25 @@ describe('pretty HTML element', () => {
     } as HTMLElement;
     spyOn(prettyHTMLLog, 'highlight');
 
-    htmlElementPrettier.prettyHtmlElement(htmlElement, THEMES.DRACULA);
+    htmlElementPrettier.prettyHtmlElement(htmlElement, true, THEMES.DRACULA);
     expect(prettyHTMLLog.highlight).toHaveBeenCalledWith(
       innerHTML,
+      THEMES.DRACULA
+    );
+  });
+
+  it('should call the highlight method with the innerHTML', () => {
+    const innerHTML = '<h1>Foo</h1><!--Some comment-->';
+    const commentFreeHTML = '<h1>Foo</h1>';
+    const htmlElement = {
+      innerHTML
+    } as HTMLElement;
+    spyOn(prettyHTMLLog, 'highlight');
+    spyOn(prettierUtil, 'removeComments').and.returnValue(commentFreeHTML);
+
+    htmlElementPrettier.prettyHtmlElement(htmlElement, false, THEMES.DRACULA);
+    expect(prettyHTMLLog.highlight).toHaveBeenCalledWith(
+      commentFreeHTML,
       THEMES.DRACULA
     );
   });

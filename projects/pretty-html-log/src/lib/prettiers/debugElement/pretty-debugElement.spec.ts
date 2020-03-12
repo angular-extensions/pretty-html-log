@@ -2,6 +2,8 @@ import { DebugElement } from '@angular/core';
 import { THEMES } from 'pretty-html-log';
 import * as prettyHTMLLog from 'pretty-html-log';
 
+import * as prettierUtil from '../prettier-util';
+
 import * as debugElementPrettier from './pretty-debugElement';
 import { prettyPrintDebugElement } from './pretty-debugElement';
 
@@ -10,10 +12,14 @@ describe('pretty debug element', () => {
     console.log = jest.fn();
     const debugElement = {} as DebugElement;
     spyOn(debugElementPrettier, 'prettyDebugelement');
-    debugElementPrettier.prettyPrintDebugElement(debugElement, THEMES.DRACULA);
+    debugElementPrettier.prettyPrintDebugElement(
+      debugElement,
+      true,
+      THEMES.DRACULA
+    );
 
     expect(console.log).toHaveBeenCalledWith(
-      prettyPrintDebugElement(debugElement, THEMES.DRACULA)
+      prettyPrintDebugElement(debugElement, true, THEMES.DRACULA)
     );
   });
 
@@ -34,17 +40,18 @@ describe('pretty debug element', () => {
     spyOn(debugElementPrettier, 'prettyDebugelement');
     debugElementPrettier.prettyPrintDebugElements(
       debugElements,
+      true,
       THEMES.DRACULA
     );
 
     expect(console.log).toHaveBeenCalledWith(
-      prettyPrintDebugElement(debugElementOne, THEMES.DRACULA)
+      prettyPrintDebugElement(debugElementOne, true, THEMES.DRACULA)
     );
     expect(console.log).toHaveBeenCalledWith(
-      prettyPrintDebugElement(debugElementTwo, THEMES.DRACULA)
+      prettyPrintDebugElement(debugElementTwo, true, THEMES.DRACULA)
     );
     expect(console.log).toHaveBeenCalledWith(
-      prettyPrintDebugElement(debugElementThree, THEMES.DRACULA)
+      prettyPrintDebugElement(debugElementThree, true, THEMES.DRACULA)
     );
   });
 
@@ -57,9 +64,31 @@ describe('pretty debug element', () => {
     } as DebugElement;
     spyOn(prettyHTMLLog, 'highlight');
 
-    debugElementPrettier.prettyDebugelement(debugElement, THEMES.DRACULA);
+    debugElementPrettier.prettyDebugelement(debugElement, true, THEMES.DRACULA);
     expect(prettyHTMLLog.highlight).toHaveBeenCalledWith(
       innerHTML,
+      THEMES.DRACULA
+    );
+  });
+
+  it('should call the highlight method with the innerHTML without comments', () => {
+    const innerHTML = '<h1>Foo</h1><!--Some comment-->';
+    const commentFreeHTML = '<h1>Foo</h1>';
+    const debugElement = {
+      nativeElement: {
+        innerHTML
+      }
+    } as DebugElement;
+    spyOn(prettyHTMLLog, 'highlight');
+    spyOn(prettierUtil, 'removeComments').and.returnValue(commentFreeHTML);
+
+    debugElementPrettier.prettyDebugelement(
+      debugElement,
+      false,
+      THEMES.DRACULA
+    );
+    expect(prettyHTMLLog.highlight).toHaveBeenCalledWith(
+      commentFreeHTML,
       THEMES.DRACULA
     );
   });

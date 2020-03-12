@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/angular-extensions/pretty-html-log/compare/v1.0.3...v2.0.0) (2020-03-12)
+
+
+### Features
+
+* **comments:** disable comments by default and add flag to add them ([8bbda1e](https://github.com/angular-extensions/pretty-html-log/commit/8bbda1eaef9c3292be56563840ee47f04dba5892))
+
+
+### BREAKING CHANGES
+
+* **comments:** param order changed: before(ngHTMLElement, theme) - now: (ngHTMLElement, enableComments, theme)
+
 ## [1.0.3](https://github.com/angular-extensions/pretty-html-log/compare/v1.0.2...v1.0.3) (2019-12-04)
 
 

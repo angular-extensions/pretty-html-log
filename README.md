@@ -3,7 +3,7 @@
 ![logNgHTML](https://raw.githubusercontent.com/angular-extensions/pretty-html-log/master/images/logo.png)
 
 This module allows you to pretty print the inner HTML
-of `ComponentFixtures`, `DebugElements`, `NativeElements` or even plain HTML `strings` to the console.
+of `ComponentFixture`, single or multiple `DebugElements`, single or multiple `NativeElements` or even plain HTML `strings` to the console.
 **This is very useful for debugging Angular component tests in Jest**
 
 ![logNgHTML](https://raw.githubusercontent.com/angular-extensions/pretty-html-log/master/images/before-after.png)
@@ -18,7 +18,7 @@ npm i -D @angular-extensions/pretty-html-log
 ```
 
 This module is best used with Angular and Jest. Create a
-`setupJest.ts` file in your `src` directory and add the following line **after your jest-preset-angular import. The order can matter**:
+`setupJest.ts` file in your `src` directory and add the following line **after your jest-preset-angular import. ⚠️ The order can matter**:
 
 ```
 import '@angular-extensions/pretty-html-log'
@@ -62,15 +62,21 @@ Which will print the following string to your console
 
 ![logNgHTML](https://raw.githubusercontent.com/angular-extensions/pretty-html-log/master/images/output.png)
 
-### Further examples
+### Examples
 
-Instead of passing in a DebugElement you can also pass in a fixture:
+Log the content innerHTML of a fixture
 
 ```
 console.logNgHTML(fixture);
 ```
 
-or a nativeElement
+of a debugElement (or multiple debugElements)
+
+```
+console.logNgHTML(fixture.debugElement);
+```
+
+of a nativeElement (or multiple nativeElements)
 
 ```
 console.logNgHTML(fixture.debugElement.nativeElement);
@@ -84,11 +90,19 @@ console.logNgHTML('<h1>Foo</h1>');
 
 ### Print Angular comments
 
+Angular adds some comments to our HTML file. Usually, when debugging our tests, we don't need them. Therefore they
+are not printed by default. However, there are cases where you want to print those comments. To do so, you
+can pass `true` as an additional flag tot he `logNgHTML` method.
+
 ```
 console.logNgHTML(fixture, true);
 ```
 
 ### Change the theme
+
+`@angular-extensions/pretty-html-log` allows you to print the html logs in different themes.
+Currently, we support (DRACULA, VSCODE and MATERIAL). The themes can be importet from `pretty-html-log`, the
+base library `@angular-extensions/pretty-html-log` depends on.
 
 ```
 import {THEMES} from 'pretty-html-log';

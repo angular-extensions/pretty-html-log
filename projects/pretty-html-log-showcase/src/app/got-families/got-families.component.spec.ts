@@ -46,9 +46,14 @@ describe('GotFamiliesComponent', () => {
     fixture.detectChanges();
     await fixture.whenStable();
 
+    console.logNgHTML(fixture);
+
     const actualFamilieMemebersElements = fixture.debugElement.queryAll(
       By.css('li')
     );
+
+    console.logNgHTML(actualFamilieMemebersElements);
+
     const actualFamilieMembers = actualFamilieMemebersElements.map(
       (debugElement: DebugElement) => debugElement.nativeElement.innerHTML
     );

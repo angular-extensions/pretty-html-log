@@ -1,3 +1,15 @@
+# [3.0.0](https://github.com/angular-extensions/pretty-html-log/compare/v2.0.0...v3.0.0) (2020-04-17)
+
+
+### Features
+
+* **upgrade:** upgrade to Angular 9 ([97c9f61](https://github.com/angular-extensions/pretty-html-log/commit/97c9f6139e0f6967b895a0eaeebee5e13eb9ac0d))
+
+
+### BREAKING CHANGES
+
+* **upgrade:** Uprgrade to Angular 9, upgrade deps, improve docs
+
 # [2.0.0](https://github.com/angular-extensions/pretty-html-log/compare/v1.0.3...v2.0.0) (2020-03-12)
 
 

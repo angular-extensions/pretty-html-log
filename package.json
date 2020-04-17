@@ -8,7 +8,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:lib": "ng build pretty-html-log && npm run copy:readme",
+    "build:lib": "ng build pretty-html-log --prod && npm run copy:readme",
     "copy:readme": "copyfiles ./README.md ./dist/pretty-html-log",
     "format:check": "prettier --list-different 'projects/**/*.ts'",
     "format:write": "prettier --write 'projects/**/*.ts'",

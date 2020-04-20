@@ -1,3 +1,10 @@
+## [3.1.1](https://github.com/angular-extensions/pretty-html-log/compare/v3.1.0...v3.1.1) (2020-04-20)
+
+
+### Bug Fixes
+
+* **docs:** add blog post ([9aada7d](https://github.com/angular-extensions/pretty-html-log/commit/9aada7dd65d8e3b5dc5eab97db3331db2d569c0f))
+
 # [3.1.0](https://github.com/angular-extensions/pretty-html-log/compare/v3.0.0...v3.1.0) (2020-04-20)
 
 

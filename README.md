@@ -9,18 +9,16 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-**Table of Contents** _generated with [DocToc](https://github.com/thlorenz/doctoc)_
-
-- [@angular-extensions/pretty-html-log](#angular-extensionspretty-html-log)
-  - [Why you should use this module](#why-you-should-use-this-module)
-  - [Features](#features)
-  - [Getting started](#getting-started)
-  - [API](#api)
-  - [Examples](#examples)
-    - [Pass in specific DebugElement](#pass-in-specific-debugelement)
-    - [Examples](#examples-1)
-    - [Print Angular comments](#print-angular-comments)
-    - [Change the theme](#change-the-theme)
+- [Why you should use this module](#why-you-should-use-this-module)
+- [Features](#features)
+- [Getting started](#getting-started)
+- [API](#api)
+- [Examples](#examples)
+  - [Pass in specific DebugElement](#pass-in-specific-debugelement)
+  - [Blog post](#blog-post)
+  - [Examples](#examples-1)
+  - [Print Angular comments](#print-angular-comments)
+  - [Change the theme](#change-the-theme)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -99,6 +97,10 @@ console.logNgHTML(
 Which will print the following string to your console
 
 ![logNgHTML](https://raw.githubusercontent.com/angular-extensions/pretty-html-log/master/images/output.png)
+
+### Blog post
+
+[Improved debugging of Angular component tests in Jest](https://medium.com/angular-in-depth/improved-debugging-of-angular-component-tests-in-jest-ac035e521763) is a write up on AngularInDepth that shows how `@angular-extensions/pretty-html-log` is used and set up in a project.
 
 ### Examples
 

@@ -1,12 +1,50 @@
 # @angular-extensions/pretty-html-log
 
+> Improved debugging of Angular component tests.
+> The @angular-extension/pretty-html-log is a module that makes debugging component tests with Jest a breeze.
+> It adds a console.logNgHTML method which pretty prints the innerHTML of a ComponentFixture, a DebugElement, a NativeElement or an HTML string.
+
 ![logNgHTML](https://raw.githubusercontent.com/angular-extensions/pretty-html-log/master/images/logo.png)
 
-This module allows you to pretty print the inner HTML
-of `ComponentFixture`, single or multiple `DebugElements`, single or multiple `NativeElements` or even plain HTML `strings` to the console.
-**This is very useful for debugging Angular component tests in Jest**
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+**Table of Contents** _generated with [DocToc](https://github.com/thlorenz/doctoc)_
+
+- [@angular-extensions/pretty-html-log](#angular-extensionspretty-html-log)
+  - [Why you should use this module](#why-you-should-use-this-module)
+  - [Features](#features)
+  - [Getting started](#getting-started)
+  - [API](#api)
+  - [Examples](#examples)
+    - [Pass in specific DebugElement](#pass-in-specific-debugelement)
+    - [Examples](#examples-1)
+    - [Print Angular comments](#print-angular-comments)
+    - [Change the theme](#change-the-theme)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+## Why you should use this module
+
+When debugging component tests, it’s often necessary to inspect the DOM. The most common approach to do so is by using the good old `console.log` which has some downsides.
+First of all, it’s annoying always to type
+
+```
+fixture.debugElement.nativeElement.innerHTML
+```
+
+Moreover, the console.log statement doesn’t print the HTML in a very readable way. Therefore we still need to copy the string in a new HTML file and format it to be able to inspect it. Not with `@angular-extensions/pretty-html-log`
 
 ![logNgHTML](https://raw.githubusercontent.com/angular-extensions/pretty-html-log/master/images/before-after.png)
+
+## Features
+
+- patches the console and adds a new method `console.logNgHTML`
+- pretty prints a fixture, debugElement, nativeElement or plain HTML string - you don't have to worry
+  how to get to the HTML, just pass the thing you want to print to the `console.logNgHTML` method.
+- highlights the HTML
+- in case you are using prettier (which you should ;)), pretty-html-log will pick
+  up your prettier config and pretty print the HTML string based on your prettier configuration. 🤩
 
 ## Getting started
 

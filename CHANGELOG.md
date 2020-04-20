@@ -1,3 +1,10 @@
+# [3.1.0](https://github.com/angular-extensions/pretty-html-log/compare/v3.0.0...v3.1.0) (2020-04-20)
+
+
+### Features
+
+* **prettier:** update pretty-html-log to use existing prettier config if available ([69edee7](https://github.com/angular-extensions/pretty-html-log/commit/69edee71ee30fe3a32917f5bcf048310856cbd6d))
+
 # [3.0.0](https://github.com/angular-extensions/pretty-html-log/compare/v2.0.0...v3.0.0) (2020-04-17)
 
 

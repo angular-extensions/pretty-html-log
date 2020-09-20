@@ -19,6 +19,7 @@
   - [Examples](#examples-1)
   - [Print Angular comments](#print-angular-comments)
   - [Change the theme](#change-the-theme)
+- [FAQ](#faq)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -27,8 +28,8 @@
 When debugging component tests, it’s often necessary to inspect the DOM. The most common approach to do so is by using the good old `console.log` which has some downsides.
 First of all, it’s annoying always to type
 
-```
-fixture.debugElement.nativeElement.innerHTML
+```typescript
+fixture.debugElement.nativeElement.innerHTML;
 ```
 
 Moreover, the console.log statement doesn’t print the HTML in a very readable way. Therefore we still need to copy the string in a new HTML file and format it to be able to inspect it. Not with `@angular-extensions/pretty-html-log`
@@ -56,8 +57,8 @@ npm i -D @angular-extensions/pretty-html-log
 This module is best used with Angular and Jest. Create a
 `setupJest.ts` file in your `src` directory and add the following line **after your jest-preset-angular import. ⚠️ The order can matter**:
 
-```
-import '@angular-extensions/pretty-html-log'
+```typescript
+import '@angular-extensions/pretty-html-log';
 ```
 
 This import adds a `logNgHTML` method to your console. You can then
@@ -88,10 +89,8 @@ The `console.logNgHTML()` method has the following signature:
 
 In your test you can simply write the following line.
 
-```
-console.logNgHTML(
-    fixture.debugElement.query(By.css('mat-tab-body'))
-)
+```typescript
+console.logNgHTML(fixture.debugElement.query(By.css('mat-tab-body')));
 ```
 
 Which will print the following string to your console
@@ -106,25 +105,25 @@ Which will print the following string to your console
 
 Log the content innerHTML of a fixture
 
-```
+```typescript
 console.logNgHTML(fixture);
 ```
 
 of a debugElement (or multiple debugElements)
 
-```
+```typescript
 console.logNgHTML(fixture.debugElement);
 ```
 
 of a nativeElement (or multiple nativeElements)
 
-```
+```typescript
 console.logNgHTML(fixture.debugElement.nativeElement);
 ```
 
 or even a simple HTML string
 
-```
+```typescript
 console.logNgHTML('<h1>Foo</h1>');
 ```
 
@@ -134,7 +133,7 @@ Angular adds some comments to our HTML file. Usually, when debugging our tests, 
 are not printed by default. However, there are cases where you want to print those comments. To do so, you
 can pass `true` as an additional flag tot he `logNgHTML` method.
 
-```
+```typescript
 console.logNgHTML(fixture, true);
 ```
 
@@ -144,8 +143,25 @@ console.logNgHTML(fixture, true);
 Currently, we support (DRACULA, VSCODE and MATERIAL). The themes can be importet from `pretty-html-log`, the
 base library `@angular-extensions/pretty-html-log` depends on.
 
-```
-import {THEMES} from 'pretty-html-log';
+```typescript
+import { THEMES } from 'pretty-html-log';
 
 console.logNgHTML(fixture, false, THEMES.VSCODE);
+```
+
+# FAQ
+
+I use the module but I don't get autocompletion when typing `console.logNgHTML`, furthermore I get the following error when I run my tests. `console.logNgHTML is not a function`. This is usually a sign that your `tsconfig.json` doesn't include the `setupJest.ts` file. Make sure that the `setupJest.ts` is included in your `tsconfig.json`.
+
+```json
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/spec",
+    "types": ["jest", "node"],
+    "esModuleInterop": true
+  },
+  "files": ["polyfills.ts", "../jest.setup.ts"],
+  "include": ["**/*.spec.ts", "**/*.d.ts"]
+}
 ```

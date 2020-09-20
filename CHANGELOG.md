@@ -1,3 +1,10 @@
+## [3.1.2](https://github.com/angular-extensions/pretty-html-log/compare/v3.1.1...v3.1.2) (2020-09-20)
+
+
+### Bug Fixes
+
+* **range:** support multiple Angular versions ([407f30f](https://github.com/angular-extensions/pretty-html-log/commit/407f30f08b7673a811f420227e377a840c3a1157))
+
 ## [3.1.1](https://github.com/angular-extensions/pretty-html-log/compare/v3.1.0...v3.1.1) (2020-04-20)
 
 

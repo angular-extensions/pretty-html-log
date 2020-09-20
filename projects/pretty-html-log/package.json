@@ -8,8 +8,8 @@
     "pretty-html-log": "^1.0.6"
   },
   "peerDependencies": {
-    "@angular/common": "^9.0.0",
-    "@angular/core": "^9.0.0"
+    "@angular/common": "9 - 10",
+    "@angular/core": "9 - 10"
   },
   "repository": {
     "type": "git",

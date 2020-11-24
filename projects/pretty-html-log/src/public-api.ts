@@ -3,3 +3,4 @@
  */
 
 export * from './lib/patchConsole';
+export * from './lib/logNgHTML';

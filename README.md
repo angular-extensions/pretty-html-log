@@ -93,7 +93,12 @@ In your test you can simply write the following line.
 console.logNgHTML(fixture.debugElement.query(By.css('mat-tab-body')));
 ```
 
-Which will print the following string to your console
+Which will print the following string to your console. Depending on your test configuration you
+might run into an issue with the patch of the console. In such cases its best to report an [issue](https://github.com/angular-extensions/pretty-html-log/issues) and use the `logNgHTML` function directly.
+
+```typescript
+logNgHTML(fixture.debugElement.query(By.css('mat-tab-body')));
+```
 
 ![logNgHTML](https://raw.githubusercontent.com/angular-extensions/pretty-html-log/master/images/output.png)
 

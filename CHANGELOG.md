@@ -1,3 +1,10 @@
+## [3.1.3](https://github.com/angular-extensions/pretty-html-log/compare/v3.1.2...v3.1.3) (2020-11-30)
+
+
+### Bug Fixes
+
+* 🐛 document the exported logNgHTML function ([43191cf](https://github.com/angular-extensions/pretty-html-log/commit/43191cf6420beb1ab5a961c138a3b5ef3e711e33))
+
 ## [3.1.2](https://github.com/angular-extensions/pretty-html-log/compare/v3.1.1...v3.1.2) (2020-09-20)
 
 

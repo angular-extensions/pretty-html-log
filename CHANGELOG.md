@@ -1,3 +1,15 @@
+# [4.0.0](https://github.com/angular-extensions/pretty-html-log/compare/v3.1.3...v4.0.0) (2021-03-17)
+
+
+### Features
+
+* 🎸 Angular 11 ([afaf73e](https://github.com/angular-extensions/pretty-html-log/commit/afaf73e855737ca47f00fe291b543ecd4a7d5bd7))
+
+
+### BREAKING CHANGES
+
+* 🧨 Angular 11
+
 ## [3.1.3](https://github.com/angular-extensions/pretty-html-log/compare/v3.1.2...v3.1.3) (2020-11-30)
 
 

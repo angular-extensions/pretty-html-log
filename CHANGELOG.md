@@ -1,3 +1,10 @@
+## [4.0.1](https://github.com/angular-extensions/pretty-html-log/compare/v4.0.0...v4.0.1) (2021-03-17)
+
+
+### Bug Fixes
+
+* **build:** fix pretty-html-log dep ([55df5ed](https://github.com/angular-extensions/pretty-html-log/commit/55df5edee27bf267bfbf991a8f70c01a951dcc12))
+
 # [4.0.0](https://github.com/angular-extensions/pretty-html-log/compare/v3.1.3...v4.0.0) (2021-03-17)
 
 

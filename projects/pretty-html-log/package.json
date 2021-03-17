@@ -5,12 +5,12 @@
     "access": "public"
   },
   "dependencies": {
-    "pretty-html-log": "^1.0.6",
+    "pretty-html-log": "^1.1.1",
     "tslib": "^2.0.0"
   },
   "peerDependencies": {
-    "@angular/common": "9 - 10",
-    "@angular/core": "9 - 10"
+    "@angular/common": ">=9",
+    "@angular/core": ">=9"
   },
   "repository": {
     "type": "git",

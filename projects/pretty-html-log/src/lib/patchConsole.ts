@@ -1,4 +1,5 @@
 import { Theme } from 'pretty-html-log';
+
 import { logNgHTML } from './logNgHTML';
 
 (() => {

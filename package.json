@@ -15,7 +15,7 @@
     "test": "jest --config ./projects/pretty-html-log/jest.config.js",
     "test:coverage": "jest --coverage --config  ./projects/pretty-html-log/jest.config.js",
     "test:watch": "jest -o --watch --config ./projects/pretty-html-log/jest.config.js",
-    "report-coverage:lib": "cat ./projects/pretty-html-log/coverage/lcov.info | codecov",
+    "report-coverage": "cat ./projects/pretty-html-log/coverage/lcov.info | codecov",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "semantic-release": "semantic-release"

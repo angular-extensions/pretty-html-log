@@ -1,4 +1,9 @@
-import {async, ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {
+  async,
+  ComponentFixture,
+  TestBed,
+  waitForAsync
+} from '@angular/core/testing';
 import { Component, DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import * as prettyHTMLLog from 'pretty-html-log';
@@ -28,11 +33,14 @@ describe('LogNgHTML', () => {
   const theme = THEMES.DRACULA;
   const enableComments = true;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [MockComponent]
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [MockComponent],
+        teardown: { destroyAfterEach: false }
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(MockComponent);

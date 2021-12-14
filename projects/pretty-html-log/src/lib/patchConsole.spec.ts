@@ -1,10 +1,7 @@
-describe('Patch console', () => {
-  it('should not contain a console.logNgHTML method', () => {
-    expect((console as any).logNgHTML).not.toBeDefined();
-  });
-
-  it('should patch the console and add a console.logNgHTML method', () => {
+describe('Add global', () => {
+  it('should add a logNgHTML method to the global', () => {
+    expect((global as any).logNgHTML).not.toBeDefined();
     require('./patchConsole');
-    expect((console as any).logNgHTML).toBeDefined();
+    expect((global as any).logNgHTML).toBeDefined();
   });
 });

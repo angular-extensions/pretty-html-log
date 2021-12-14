@@ -9,16 +9,21 @@ import { prettyPrintHtmlElement } from './pretty-htmlelement';
 describe('pretty HTML element', () => {
   it('should call prettyHtmlElement with the htmlElement and pass it to console.log', () => {
     console.log = jest.fn();
-    const htmlElement = {} as HTMLElement;
-    spyOn(htmlElementPrettier, 'prettyHtmlElement');
+    const htmlElement = {
+      innerHTML: '<h1>Some mock</h1>'
+    } as HTMLElement;
+    jest.spyOn(htmlElementPrettier, 'prettyHtmlElement');
     htmlElementPrettier.prettyPrintHtmlElement(
       htmlElement,
       false,
       THEMES.DRACULA
     );
 
-    expect(console.log).toHaveBeenCalledWith(
-      prettyPrintHtmlElement(htmlElement, false, THEMES.DRACULA)
+    expect(console.log).toHaveBeenCalled();
+    expect(htmlElementPrettier.prettyHtmlElement).toHaveBeenCalledWith(
+      htmlElement,
+      false,
+      THEMES.DRACULA
     );
   });
 
@@ -27,30 +32,46 @@ describe('pretty HTML element', () => {
     for each `, () => {
     console.log = jest.fn();
 
-    const htmlElementOne = { innerText: 'HtmlElementOne' } as HTMLElement;
-    const htmlElementTwo = { innerText: 'HtmlElementTwo' } as HTMLElement;
-    const htmlElementThree = { innerText: 'HtmlElementThree' } as HTMLElement;
+    const htmlElementOne = {
+      innerHTML: '<h1>first mock element</h1>',
+      innerText: 'HtmlElementOne'
+    } as HTMLElement;
+    const htmlElementTwo = {
+      innerHTML: '<h1>second mock element</h1>',
+      innerText: 'HtmlElementTwo'
+    } as HTMLElement;
+    const htmlElementThree = {
+      innerHTML: '<h1>third mock element</h1>',
+      innerText: 'HtmlElementThree'
+    } as HTMLElement;
 
     const htmlElements = [
       htmlElementOne,
       htmlElementTwo,
       htmlElementThree
     ] as HTMLElement[];
-    spyOn(htmlElementPrettier, 'prettyHtmlElement');
+    jest.spyOn(htmlElementPrettier, 'prettyHtmlElement');
     htmlElementPrettier.prettyPrintHtmlElements(
       htmlElements,
       false,
       THEMES.DRACULA
     );
 
-    expect(console.log).toHaveBeenCalledWith(
-      prettyPrintHtmlElement(htmlElementOne, false, THEMES.DRACULA)
+    expect(console.log).toHaveBeenCalledTimes(3);
+    expect(htmlElementPrettier.prettyHtmlElement).toHaveBeenCalledWith(
+      htmlElementOne,
+      false,
+      THEMES.DRACULA
     );
-    expect(console.log).toHaveBeenCalledWith(
-      prettyPrintHtmlElement(htmlElementTwo, false, THEMES.DRACULA)
+    expect(htmlElementPrettier.prettyHtmlElement).toHaveBeenCalledWith(
+      htmlElementTwo,
+      false,
+      THEMES.DRACULA
     );
-    expect(console.log).toHaveBeenCalledWith(
-      prettyPrintHtmlElement(htmlElementThree, false, THEMES.DRACULA)
+    expect(htmlElementPrettier.prettyHtmlElement).toHaveBeenCalledWith(
+      htmlElementThree,
+      false,
+      THEMES.DRACULA
     );
   });
 
@@ -59,7 +80,7 @@ describe('pretty HTML element', () => {
     const htmlElement = {
       innerHTML
     } as HTMLElement;
-    spyOn(prettyHTMLLog, 'highlight');
+    jest.spyOn(prettyHTMLLog, 'highlight');
 
     htmlElementPrettier.prettyHtmlElement(htmlElement, true, THEMES.DRACULA);
     expect(prettyHTMLLog.highlight).toHaveBeenCalledWith(
@@ -74,8 +95,8 @@ describe('pretty HTML element', () => {
     const htmlElement = {
       innerHTML
     } as HTMLElement;
-    spyOn(prettyHTMLLog, 'highlight');
-    spyOn(prettierUtil, 'removeComments').and.returnValue(commentFreeHTML);
+    jest.spyOn(prettyHTMLLog, 'highlight');
+    jest.spyOn(prettierUtil, 'removeComments').mockReturnValue(commentFreeHTML);
 
     htmlElementPrettier.prettyHtmlElement(htmlElement, false, THEMES.DRACULA);
     expect(prettyHTMLLog.highlight).toHaveBeenCalledWith(

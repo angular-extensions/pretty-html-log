@@ -1,3 +1,23 @@
+# [5.0.0](https://github.com/angular-extensions/pretty-html-log/compare/v4.0.1...v5.0.0) (2022-01-04)
+
+
+### chore
+
+* 🤖 Angular 13 ([ca0fa69](https://github.com/angular-extensions/pretty-html-log/commit/ca0fa6977374c13156790276c0d92a59d9b6d3ae))
+
+
+### Features
+
+* 🎸 add phl method ([bf5f393](https://github.com/angular-extensions/pretty-html-log/commit/bf5f3935cbb1ba1854760dfe61b99686fa4533f9))
+* 🎸 angular 12 ([b2be6b1](https://github.com/angular-extensions/pretty-html-log/commit/b2be6b18be2fda6c4b52ea3e358365bdc0add83a))
+* 🎸 provide correct types ([dc252ed](https://github.com/angular-extensions/pretty-html-log/commit/dc252ed48217b877cf6b7c27a09e78aff4b1b076))
+
+
+### BREAKING CHANGES
+
+* 🧨 Upgrade to Angular 13 and Ivy
+* 🧨 Angular upgrade
+
 ## [4.0.1](https://github.com/angular-extensions/pretty-html-log/compare/v4.0.0...v4.0.1) (2021-03-17)
 
 

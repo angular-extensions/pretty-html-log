@@ -1,6 +1,6 @@
 {
   "name": "@angular-extensions/pretty-html-log",
-  "version": "4.0.1",
+  "version": "5.0.0",
   "publishConfig": {
     "access": "public"
   },

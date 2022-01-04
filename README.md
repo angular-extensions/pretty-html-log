@@ -81,7 +81,7 @@ Maybe you don't want to use a plugin that cleans up unused imports or maybe this
 
 2. Import `phl` from `@angular-extensions/pretty-html-log` and provide it as a global inside your `jest.config.mjs`:
 
-   ```json
+   ```javascript
    import {phl} from "@angular-extensions/pretty-html-log";
 
    module.exports = {

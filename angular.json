@@ -28,16 +28,6 @@
             "tsConfig": "projects/pretty-html-log/tsconfig.spec.json",
             "karmaConfig": "projects/pretty-html-log/karma.conf.js"
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/pretty-html-log/tsconfig.lib.json",
-              "projects/pretty-html-log/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**"]
-          }
         }
       }
     }

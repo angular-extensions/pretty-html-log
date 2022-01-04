@@ -1,8 +1,9 @@
 # @angular-extensions/pretty-html-log
 
-> Improved debugging of Angular component tests.
+> **Improved debugging of Angular component tests with Jest!**
+>
 > The @angular-extension/pretty-html-log is a module that makes debugging component tests with Jest a breeze.
-> It adds a console.logNgHTML method which pretty prints the innerHTML of a ComponentFixture, a DebugElement, a NativeElement or an HTML string.
+> It adds a `phl` method which pretty prints the _innerHTML_ of a `ComponentFixture`, a `DebugElement`, a `NativeElement` or an HTML string.
 
 ![logNgHTML](https://raw.githubusercontent.com/angular-extensions/pretty-html-log/master/images/logo.png)
 
@@ -12,6 +13,9 @@
 - [Why you should use this module](#why-you-should-use-this-module)
 - [Features](#features)
 - [Getting started](#getting-started)
+  - [Installation](#installation)
+  - [Usage with an import](#usage-with-an-import)
+  - [Provide phl as a Jest global](#provide-phl-as-a-jest-global)
 - [API](#api)
 - [Examples](#examples)
   - [Pass in specific DebugElement](#pass-in-specific-debugelement)
@@ -19,57 +23,97 @@
   - [Examples](#examples-1)
   - [Print Angular comments](#print-angular-comments)
   - [Change the theme](#change-the-theme)
-- [FAQ](#faq)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Why you should use this module
 
 When debugging component tests, it’s often necessary to inspect the DOM. The most common approach to do so is by using the good old `console.log` which has some downsides.
-First of all, it’s annoying always to type
+
+First of all, it’s annoying to always type
 
 ```typescript
 fixture.debugElement.nativeElement.innerHTML;
 ```
 
-Moreover, the console.log statement doesn’t print the HTML in a very readable way. Therefore we still need to copy the string in a new HTML file and format it to be able to inspect it. Not with `@angular-extensions/pretty-html-log`
+Moreover, the `console.log` statement doesn’t print the HTML in a very readable way. Therefore we still need to copy the string in a new HTML file and format it to be able to inspect it. Not with **@angular-extensions/pretty-html-log**!
 
 ![logNgHTML](https://raw.githubusercontent.com/angular-extensions/pretty-html-log/master/images/before-after.png)
 
 ## Features
 
-- patches the console and adds a new method `console.logNgHTML`
-- pretty prints a fixture, debugElement, nativeElement or plain HTML string - you don't have to worry
-  how to get to the HTML, just pass the thing you want to print to the `console.logNgHTML` method.
-- highlights the HTML
+- Provides a `phl` method that highlights and pretty prints a `fixture`, `debugElement`, `nativeElement` or even a plain HTML string - you don't have to worry how to get to the HTML, just pass the thing you want to print to the `phl` method.
 - in case you are using prettier (which you should ;)), pretty-html-log will pick
   up your prettier config and pretty print the HTML string based on your prettier configuration. 🤩
 
 ## Getting started
 
-This module will only be used during development and can therefore
-be installed as a dev dependency.
+### Installation
+
+This module will only be used during development and can therefore be installed as a dev dependency.
 
 ```
 npm i -D @angular-extensions/pretty-html-log
 ```
 
-This module is best used with Angular and Jest. Create a
-`setupJest.ts` file in your `src` directory and add the following line **after your jest-preset-angular import. ⚠️ The order can matter**:
+### Usage with an import
+
+The `@angular-extensions/pretty-html-log` package provides a `phl` method that you can use to pretty print a `fixture`, `debugElement`, `nativeElement` or even a plain HTML string. Simply import it while debugging and pretty print that HTML.
 
 ```typescript
-import '@angular-extensions/pretty-html-log';
+import { phl } from '@angular-extensions/pretty-html-log';
+
+describe('my test suite', () => {
+  it('should be green', () => {
+    phl(fixture); // This will pretty print the fixture
+    expect(myTable.getRows()).toBe(5);
+  });
+});
 ```
 
-This import adds a `logNgHTML` method to your console. You can then
-use this method during tests to pretty print `ComponentFixtures`,
-`DebugElements`, `NativeElements` or even plain HTML `strings` .
+> Note that this way adds a import method. To make sure this import statement gets cleaned up we should configure our eslint to clean up unused imports. More: https://www.npmjs.com/package/eslint-plugin-unused-imports.
+
+### Provide phl as a Jest global
+
+Maybe you don't want to use a plugin that cleans up unused imports or maybe this import statement just annoys you. If that's the case, you have to option to provide the `phl` method as a Jest global. Similar to `it`, `describe` or `expect`.
+
+1. rename you jest config from `jest.config.js` to `jest.config.mjs`. Using the `.mjs` extension allows us to use ES Modules inside our Jest config. Jest officially supports `.mjs` configuration files.
+
+2. Import `phl` from `@angular-extensions/pretty-html-log` and provide it as a global inside your `jest.config.mjs`:
+
+   ```json
+   import {phl} from "@angular-extensions/pretty-html-log";
+
+   module.exports = {
+     globals: {
+       phl
+     }
+   };
+   ```
+
+3. Import `@angular-extensions/pretty-html-log` inside your jest.setup.ts
+
+   ```typescript
+   import 'jest-preset-angular/setup-jest';
+   import '@angular-extensions/pretty-html-log';
+   ```
+
+4. Start using it inside your tests without the usage of import 🤩
+
+   ```typescript
+   describe('my test suite', () => {
+     it('should be green', () => {
+       phl(fixture); // This will pretty print the fixture
+       expect(myTable.getRows()).toBe(5);
+     });
+   });
+   ```
 
 ## API
 
-The `console.logNgHTML()` method has the following signature:
+The `phl` method has the following signature:
 
-```
+```typescript
 <T>(
   ngHTMLElement: NgHTMLElement<T>,
   enableComments = false,
@@ -90,14 +134,14 @@ The `console.logNgHTML()` method has the following signature:
 In your test you can simply write the following line.
 
 ```typescript
-console.logNgHTML(fixture.debugElement.query(By.css('mat-tab-body')));
+phl(fixture.debugElement.query(By.css('mat-tab-body')));
 ```
 
 Which will print the following string to your console. Depending on your test configuration you
 might run into an issue with the patch of the console. In such cases its best to report an [issue](https://github.com/angular-extensions/pretty-html-log/issues) and use the `logNgHTML` function directly.
 
 ```typescript
-logNgHTML(fixture.debugElement.query(By.css('mat-tab-body')));
+phl(fixture.debugElement.query(By.css('mat-tab-body')));
 ```
 
 ![logNgHTML](https://raw.githubusercontent.com/angular-extensions/pretty-html-log/master/images/output.png)
@@ -111,25 +155,25 @@ logNgHTML(fixture.debugElement.query(By.css('mat-tab-body')));
 Log the content innerHTML of a fixture
 
 ```typescript
-console.logNgHTML(fixture);
+phl(fixture);
 ```
 
 of a debugElement (or multiple debugElements)
 
 ```typescript
-console.logNgHTML(fixture.debugElement);
+phl(fixture.debugElement);
 ```
 
 of a nativeElement (or multiple nativeElements)
 
 ```typescript
-console.logNgHTML(fixture.debugElement.nativeElement);
+phl(fixture.debugElement.nativeElement);
 ```
 
 or even a simple HTML string
 
 ```typescript
-console.logNgHTML('<h1>Foo</h1>');
+phl('<h1>Foo</h1>');
 ```
 
 ### Print Angular comments
@@ -139,34 +183,16 @@ are not printed by default. However, there are cases where you want to print tho
 can pass `true` as an additional flag tot he `logNgHTML` method.
 
 ```typescript
-console.logNgHTML(fixture, true);
+phl(fixture, true);
 ```
 
 ### Change the theme
 
 `@angular-extensions/pretty-html-log` allows you to print the html logs in different themes.
-Currently, we support (DRACULA, VSCODE and MATERIAL). The themes can be importet from `pretty-html-log`, the
-base library `@angular-extensions/pretty-html-log` depends on.
+Currently, we support (DRACULA, VSCODE and MATERIAL). The themes can be importet from `pretty-html-log`, the base library `@angular-extensions/pretty-html-log` depends on.
 
 ```typescript
 import { THEMES } from 'pretty-html-log';
 
 console.logNgHTML(fixture, false, THEMES.VSCODE);
-```
-
-# FAQ
-
-I use the module but I don't get autocompletion when typing `console.logNgHTML`, furthermore I get the following error when I run my tests. `console.logNgHTML is not a function`. This is usually a sign that your `tsconfig.json` doesn't include the `setupJest.ts` file. Make sure that the `setupJest.ts` is included in your `tsconfig.json`.
-
-```json
-{
-  "extends": "../tsconfig.json",
-  "compilerOptions": {
-    "outDir": "./out-tsc/spec",
-    "types": ["jest", "node"],
-    "esModuleInterop": true
-  },
-  "files": ["polyfills.ts", "../jest.setup.ts"],
-  "include": ["**/*.spec.ts", "**/*.d.ts"]
-}
 ```

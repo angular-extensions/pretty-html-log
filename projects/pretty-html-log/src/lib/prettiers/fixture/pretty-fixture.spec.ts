@@ -10,12 +10,21 @@ import { fixturePrettier } from './pretty-fixture';
 describe('pretty fixture', () => {
   it('should call prettyFixture with the componentFixture and pass it to console.log', () => {
     console.log = jest.fn();
-    const componentFixture = {} as ComponentFixture<any>;
-    spyOn(prettyFixture, 'prettyFixture');
+    const componentFixture = {
+      debugElement: {
+        nativeElement: {
+          innerHTML: '<h1>some mock element</h1>'
+        }
+      }
+    } as ComponentFixture<any>;
+    jest.spyOn(prettyFixture, 'prettyFixture');
     prettyFixture.fixturePrettier(componentFixture, false, THEMES.DRACULA);
 
-    expect(console.log).toHaveBeenCalledWith(
-      fixturePrettier(componentFixture, false, THEMES.DRACULA)
+    expect(console.log).toHaveBeenCalled();
+    expect(prettyFixture.prettyFixture).toHaveBeenCalledWith(
+      componentFixture,
+      false,
+      THEMES.DRACULA
     );
   });
 
@@ -28,7 +37,7 @@ describe('pretty fixture', () => {
         }
       }
     } as ComponentFixture<any>;
-    spyOn(prettyHTMLLog, 'highlight');
+    jest.spyOn(prettyHTMLLog, 'highlight');
 
     prettyFixture.prettyFixture(componentFixture, true, THEMES.DRACULA);
     expect(prettyHTMLLog.highlight).toHaveBeenCalledWith(
@@ -47,8 +56,8 @@ describe('pretty fixture', () => {
         }
       }
     } as ComponentFixture<any>;
-    spyOn(prettyHTMLLog, 'highlight');
-    spyOn(prettierUtil, 'removeComments').and.returnValue(commentFreeHTML);
+    jest.spyOn(prettyHTMLLog, 'highlight');
+    jest.spyOn(prettierUtil, 'removeComments').mockReturnValue(commentFreeHTML);
 
     prettyFixture.prettyFixture(componentFixture, false, THEMES.DRACULA);
     expect(prettyHTMLLog.highlight).toHaveBeenCalledWith(

@@ -10,16 +10,23 @@ import { prettyPrintDebugElement } from './pretty-debugElement';
 describe('pretty debug element', () => {
   it('should call prettyDebugelement with the debugElement and pass it to console.log', () => {
     console.log = jest.fn();
-    const debugElement = {} as DebugElement;
-    spyOn(debugElementPrettier, 'prettyDebugelement');
+    const debugElement = {
+      nativeElement: {
+        innerHTML: '<h1>Mock element</h1>'
+      }
+    } as DebugElement;
+    jest.spyOn(debugElementPrettier, 'prettyDebugelement');
     debugElementPrettier.prettyPrintDebugElement(
       debugElement,
       true,
       THEMES.DRACULA
     );
 
-    expect(console.log).toHaveBeenCalledWith(
-      prettyPrintDebugElement(debugElement, true, THEMES.DRACULA)
+    expect(console.log).toHaveBeenCalled();
+    expect(debugElementPrettier.prettyDebugelement).toHaveBeenCalledWith(
+      debugElement,
+      true,
+      THEMES.DRACULA
     );
   });
 
@@ -28,30 +35,52 @@ describe('pretty debug element', () => {
     for each `, () => {
     console.log = jest.fn();
 
-    const debugElementOne = { name: 'DebugElementOne' } as DebugElement;
-    const debugElementTwo = { name: 'DebugElementTwo' } as DebugElement;
-    const debugElementThree = { name: 'DebugElementThree' } as DebugElement;
+    const debugElementOne = {
+      name: 'DebugElementOne',
+      nativeElement: {
+        innerHTML: '<h1>first mock element</h1>'
+      }
+    } as DebugElement;
+    const debugElementTwo = {
+      name: 'DebugElementTwo',
+      nativeElement: {
+        innerHTML: '<h1>second mock element</h1>'
+      }
+    } as DebugElement;
+    const debugElementThree = {
+      name: 'DebugElementThree',
+      nativeElement: {
+        innerHTML: '<h1>third mock element</h1>'
+      }
+    } as DebugElement;
 
     const debugElements = [
       debugElementOne,
       debugElementTwo,
       debugElementThree
     ] as DebugElement[];
-    spyOn(debugElementPrettier, 'prettyDebugelement');
+    jest.spyOn(debugElementPrettier, 'prettyDebugelement');
     debugElementPrettier.prettyPrintDebugElements(
       debugElements,
       true,
       THEMES.DRACULA
     );
 
-    expect(console.log).toHaveBeenCalledWith(
-      prettyPrintDebugElement(debugElementOne, true, THEMES.DRACULA)
+    expect(console.log).toHaveBeenCalledTimes(3);
+    expect(debugElementPrettier.prettyDebugelement).toHaveBeenCalledWith(
+      debugElementOne,
+      true,
+      THEMES.DRACULA
     );
-    expect(console.log).toHaveBeenCalledWith(
-      prettyPrintDebugElement(debugElementTwo, true, THEMES.DRACULA)
+    expect(debugElementPrettier.prettyDebugelement).toHaveBeenCalledWith(
+      debugElementTwo,
+      true,
+      THEMES.DRACULA
     );
-    expect(console.log).toHaveBeenCalledWith(
-      prettyPrintDebugElement(debugElementThree, true, THEMES.DRACULA)
+    expect(debugElementPrettier.prettyDebugelement).toHaveBeenCalledWith(
+      debugElementThree,
+      true,
+      THEMES.DRACULA
     );
   });
 
@@ -62,7 +91,7 @@ describe('pretty debug element', () => {
         innerHTML
       }
     } as DebugElement;
-    spyOn(prettyHTMLLog, 'highlight');
+    jest.spyOn(prettyHTMLLog, 'highlight');
 
     debugElementPrettier.prettyDebugelement(debugElement, true, THEMES.DRACULA);
     expect(prettyHTMLLog.highlight).toHaveBeenCalledWith(
@@ -79,8 +108,8 @@ describe('pretty debug element', () => {
         innerHTML
       }
     } as DebugElement;
-    spyOn(prettyHTMLLog, 'highlight');
-    spyOn(prettierUtil, 'removeComments').and.returnValue(commentFreeHTML);
+    jest.spyOn(prettyHTMLLog, 'highlight');
+    jest.spyOn(prettierUtil, 'removeComments').mockReturnValue(commentFreeHTML);
 
     debugElementPrettier.prettyDebugelement(
       debugElement,

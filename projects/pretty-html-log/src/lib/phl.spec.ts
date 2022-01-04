@@ -1,10 +1,15 @@
-import {async, ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {
+  async,
+  ComponentFixture,
+  TestBed,
+  waitForAsync
+} from '@angular/core/testing';
 import { Component, DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import * as prettyHTMLLog from 'pretty-html-log';
-import { highlight, THEMES } from 'pretty-html-log';
+import { THEMES } from 'pretty-html-log';
 
-import { logNgHTML } from './logNgHTML';
+import { phl } from './phl';
 import * as fixturePrettier from './prettiers/fixture/pretty-fixture';
 import * as debugElementPrettier from './prettiers/debugElement/pretty-debugElement';
 import * as htmlElementPrettier from './prettiers/htmlElement/pretty-htmlelement';
@@ -22,17 +27,20 @@ import * as prettierUtil from './prettiers/prettier-util';
 })
 export class MockComponent {}
 
-describe('LogNgHTML', () => {
+describe('phl', () => {
   let component: MockComponent;
   let fixture: ComponentFixture<MockComponent>;
   const theme = THEMES.DRACULA;
   const enableComments = true;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [MockComponent]
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [MockComponent],
+        teardown: { destroyAfterEach: false }
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(MockComponent);
@@ -41,8 +49,8 @@ describe('LogNgHTML', () => {
   });
 
   it('should call prettyPrintFixture incase we provide a component fixture', () => {
-    spyOn(fixturePrettier, 'fixturePrettier');
-    logNgHTML<MockComponent>(fixture, enableComments, theme);
+    jest.spyOn(fixturePrettier, 'fixturePrettier');
+    phl<MockComponent>(fixture, enableComments, theme);
     expect(fixturePrettier.fixturePrettier).toHaveBeenCalledWith(
       fixture,
       enableComments,
@@ -51,10 +59,10 @@ describe('LogNgHTML', () => {
   });
 
   it('should call prettyPrintDebugElements in case we provide an array of DebugElements', () => {
-    spyOn(console, 'log');
-    spyOn(debugElementPrettier, 'prettyPrintDebugElements');
+    jest.spyOn(console, 'log');
+    jest.spyOn(debugElementPrettier, 'prettyPrintDebugElements');
     const debugElements = fixture.debugElement.queryAll(By.css('li'));
-    logNgHTML(debugElements, enableComments, theme);
+    phl(debugElements, enableComments, theme);
     expect(debugElementPrettier.prettyPrintDebugElements).toHaveBeenCalledWith(
       debugElements,
       enableComments,
@@ -63,12 +71,12 @@ describe('LogNgHTML', () => {
   });
 
   it('should call prettyPrintHTMLElements in case we provide an array of HTMLelements', () => {
-    spyOn(console, 'log');
-    spyOn(htmlElementPrettier, 'prettyPrintHtmlElements');
+    jest.spyOn(console, 'log');
+    jest.spyOn(htmlElementPrettier, 'prettyPrintHtmlElements');
     const htmlElements = fixture.debugElement
       .queryAll(By.css('li'))
       .map((debugElement: DebugElement) => debugElement.nativeElement);
-    logNgHTML(htmlElements, enableComments, theme);
+    phl(htmlElements, enableComments, theme);
     expect(htmlElementPrettier.prettyPrintHtmlElements).toHaveBeenCalledWith(
       htmlElements,
       enableComments,
@@ -77,9 +85,9 @@ describe('LogNgHTML', () => {
   });
 
   it('should call prettyPrintDebugElement in case we provide a debug element', () => {
-    spyOn(debugElementPrettier, 'prettyPrintDebugElement');
+    jest.spyOn(debugElementPrettier, 'prettyPrintDebugElement');
     const debugElement = fixture.debugElement.queryAll(By.css('li'))[0];
-    logNgHTML(debugElement, enableComments, theme);
+    phl(debugElement, enableComments, theme);
     expect(debugElementPrettier.prettyPrintDebugElement).toHaveBeenCalledWith(
       debugElement,
       enableComments,
@@ -88,10 +96,10 @@ describe('LogNgHTML', () => {
   });
 
   it('should call prettyPrintHTMLElement in case we provide a HTMLelement', () => {
-    spyOn(htmlElementPrettier, 'prettyPrintHtmlElement');
+    jest.spyOn(htmlElementPrettier, 'prettyPrintHtmlElement');
     const htmlElement = fixture.debugElement.queryAll(By.css('li'))[0]
       .nativeElement;
-    logNgHTML(htmlElement, enableComments, theme);
+    phl(htmlElement, enableComments, theme);
     expect(htmlElementPrettier.prettyPrintHtmlElement).toHaveBeenCalledWith(
       htmlElement,
       enableComments,
@@ -100,22 +108,22 @@ describe('LogNgHTML', () => {
   });
 
   it('should print a warning if we pass in an unknown type', () => {
-    spyOn(console, 'log');
-    spyOn(prettyHTMLLog, 'highlight');
+    jest.spyOn(console, 'log');
+    jest.spyOn(prettyHTMLLog, 'highlight');
     const htmlString = '<h1>Foo</h1>';
-    logNgHTML(htmlString, enableComments, theme);
+    phl(htmlString, enableComments, theme);
     expect(prettyHTMLLog.highlight).toHaveBeenCalledWith(htmlString, theme);
   });
 
   it('should print a warning and remove the comments we pass in an unknown type and enableComments', () => {
     const htmlString = '<h1>Foo</h1><!--Some comment-->';
     const commentFreeHTMLString = '<h1>Foo</h1>';
-    spyOn(console, 'log');
-    spyOn(prettyHTMLLog, 'highlight');
-    spyOn(prettierUtil, 'removeComments').and.returnValue(
-      commentFreeHTMLString
-    );
-    logNgHTML(htmlString, false, theme);
+    jest.spyOn(console, 'log');
+    jest.spyOn(prettyHTMLLog, 'highlight');
+    jest
+      .spyOn(prettierUtil, 'removeComments')
+      .mockReturnValue(commentFreeHTMLString);
+    phl(htmlString, false, theme);
     expect(prettyHTMLLog.highlight).toHaveBeenCalledWith(
       commentFreeHTMLString,
       theme

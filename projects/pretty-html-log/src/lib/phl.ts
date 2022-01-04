@@ -21,7 +21,7 @@ export type NgHTMLElement<T> =
   | HTMLElement[]
   | string;
 
-export const logNgHTML = <T>(
+export const phl = <T>(
   ngHTMLElement: NgHTMLElement<T>,
   enableComments = false,
   theme = THEMES.DRACULA

@@ -91,7 +91,14 @@ Maybe you don't want to use a plugin that cleans up unused imports or maybe this
    };
    ```
 
-3. Start using it inside your tests without the usage of import 🤩
+3. Import `@angular-extensions/pretty-html-log` inside your jest.setup.ts
+
+   ```typescript
+   import 'jest-preset-angular/setup-jest';
+   import '@angular-extensions/pretty-html-log';
+   ```
+
+4. Start using it inside your tests without the usage of import 🤩
 
    ```typescript
    describe('my test suite', () => {

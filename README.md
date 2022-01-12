@@ -19,10 +19,12 @@
 - [API](#api)
 - [Examples](#examples)
   - [Pass in specific DebugElement](#pass-in-specific-debugelement)
-  - [Blog post](#blog-post)
   - [Examples](#examples-1)
   - [Print Angular comments](#print-angular-comments)
   - [Change the theme](#change-the-theme)
+- [Further resources](#further-resources)
+  - [Blog post](#blog-post)
+  - [Video tutorial](#video-tutorial)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -82,7 +84,7 @@ Maybe you don't want to use a plugin that cleans up unused imports or maybe this
 2. Import `phl` from `@angular-extensions/pretty-html-log` and provide it as a global inside your `jest.config.mjs`:
 
    ```javascript
-   import {phl} from "@angular-extensions/pretty-html-log";
+   import { phl } from '@angular-extensions/pretty-html-log';
 
    module.exports = {
      globals: {
@@ -146,10 +148,6 @@ phl(fixture.debugElement.query(By.css('mat-tab-body')));
 
 ![logNgHTML](https://raw.githubusercontent.com/angular-extensions/pretty-html-log/master/images/output.png)
 
-### Blog post
-
-[Improved debugging of Angular component tests in Jest](https://medium.com/angular-in-depth/improved-debugging-of-angular-component-tests-in-jest-ac035e521763) is a write up on AngularInDepth that shows how `@angular-extensions/pretty-html-log` is used and set up in a project.
-
 ### Examples
 
 Log the content innerHTML of a fixture
@@ -196,3 +194,13 @@ import { THEMES } from 'pretty-html-log';
 
 console.logNgHTML(fixture, false, THEMES.VSCODE);
 ```
+
+## Further resources
+
+### Blog post
+
+[Improved debugging of Angular component tests in Jest](https://medium.com/angular-in-depth/improved-debugging-of-angular-component-tests-in-jest-ac035e521763) is a write up on AngularInDepth that shows how `@angular-extensions/pretty-html-log` is used and set up in a project.
+
+### Video tutorial
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/jW_B91PKzMY/0.jpg)](https://www.youtube.com/watch?v=jW_B91PKzMY)

@@ -1,7 +1,7 @@
 # @angular-extensions/pretty-html-log
 
-> **Improved debugging of Angular component tests with Jest!**
->
+**Improved debugging of Angular component tests with Jest!**
+
 > The @angular-extension/pretty-html-log is a module that makes debugging component tests with Jest a breeze.
 > It adds a `phl` method which pretty prints the _innerHTML_ of a `ComponentFixture`, a `DebugElement`, a `NativeElement` or an HTML string.
 

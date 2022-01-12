@@ -1,3 +1,10 @@
+## [5.0.1](https://github.com/angular-extensions/pretty-html-log/compare/v5.0.0...v5.0.1) (2022-01-12)
+
+
+### Bug Fixes
+
+* 🐛 release docs ([0159506](https://github.com/angular-extensions/pretty-html-log/commit/0159506e9155bd7ffeac231a23c942524fa678ab))
+
 # [5.0.0](https://github.com/angular-extensions/pretty-html-log/compare/v4.0.1...v5.0.0) (2022-01-04)
 
 

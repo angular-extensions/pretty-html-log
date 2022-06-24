@@ -46,7 +46,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/jest": "^27.0.3",
     "@types/node": "^12.11.1",
-    "codecov": "^3.6.1",
+    "codecov": "^3.8.3",
     "codelyzer": "^6.0.0",
     "copyfiles": "^2.1.1",
     "husky": "^3.0.9",

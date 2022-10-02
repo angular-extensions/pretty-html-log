@@ -15,7 +15,6 @@
 - [Getting started](#getting-started)
   - [Installation](#installation)
   - [Usage with an import](#usage-with-an-import)
-  - [Provide phl as a Jest global](#provide-phl-as-a-jest-global)
 - [API](#api)
 - [Examples](#examples)
   - [Pass in specific DebugElement](#pass-in-specific-debugelement)
@@ -74,42 +73,6 @@ describe('my test suite', () => {
 ```
 
 > Note that this way adds a import method. To make sure this import statement gets cleaned up we should configure our eslint to clean up unused imports. More: https://www.npmjs.com/package/eslint-plugin-unused-imports.
-
-### Provide phl as a Jest global
-
-Maybe you don't want to use a plugin that cleans up unused imports or maybe this import statement just annoys you. If that's the case, you have to option to provide the `phl` method as a Jest global. Similar to `it`, `describe` or `expect`.
-
-1. rename you jest config from `jest.config.js` to `jest.config.mjs`. Using the `.mjs` extension allows us to use ES Modules inside our Jest config. Jest officially supports `.mjs` configuration files.
-
-2. Import `phl` from `@angular-extensions/pretty-html-log` and provide it as a global inside your `jest.config.mjs`:
-
-   ```javascript
-   import { phl } from '@angular-extensions/pretty-html-log';
-
-   module.exports = {
-     globals: {
-       phl
-     }
-   };
-   ```
-
-3. Import `@angular-extensions/pretty-html-log` inside your jest.setup.ts
-
-   ```typescript
-   import 'jest-preset-angular/setup-jest';
-   import '@angular-extensions/pretty-html-log';
-   ```
-
-4. Start using it inside your tests without the usage of import 🤩
-
-   ```typescript
-   describe('my test suite', () => {
-     it('should be green', () => {
-       phl(fixture); // This will pretty print the fixture
-       expect(myTable.getRows()).toBe(5);
-     });
-   });
-   ```
 
 ## API
 

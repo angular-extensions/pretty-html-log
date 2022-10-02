@@ -1,6 +1,6 @@
 import { ComponentFixture } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
-import { highlight, Theme, THEMES } from 'pretty-html-log';
+import { highlight, THEMES } from 'pretty-html-log';
 
 import { fixturePrettier } from './prettiers/fixture/pretty-fixture';
 import {

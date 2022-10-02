@@ -14,7 +14,7 @@
 - [Features](#features)
 - [Getting started](#getting-started)
   - [Installation](#installation)
-  - [Usage with an import](#usage-with-an-import)
+  - [Usage](#usage)
 - [API](#api)
 - [Examples](#examples)
   - [Pass in specific DebugElement](#pass-in-specific-debugelement)
@@ -57,7 +57,7 @@ This module will only be used during development and can therefore be installed 
 npm i -D @angular-extensions/pretty-html-log
 ```
 
-### Usage with an import
+### Usage
 
 The `@angular-extensions/pretty-html-log` package provides a `phl` method that you can use to pretty print a `fixture`, `debugElement`, `nativeElement` or even a plain HTML string. Simply import it while debugging and pretty print that HTML.
 

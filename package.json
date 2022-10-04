@@ -1,6 +1,6 @@
 {
   "name": "@angular-extensions/pretty-html-log",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "scripts": {
     "adjust-version": "npm-run-all adjust-version:*",
     "adjust-version:lib": "replace-json-property projects/pretty-html-log/package.json version $VERSION",

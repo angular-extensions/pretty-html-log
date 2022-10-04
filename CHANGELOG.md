@@ -1,3 +1,12 @@
+## [5.0.2](https://github.com/angular-extensions/pretty-html-log/compare/v5.0.1...v5.0.2) (2022-10-04)
+
+
+### Bug Fixes
+
+* 🐛 (docs) update usage docs ([ffc8df8](https://github.com/angular-extensions/pretty-html-log/commit/ffc8df8c5ce9a4495cca9b87d041a2fa4778ea6c))
+* 🐛 (globals) remove no longer used declarations file ([112b62a](https://github.com/angular-extensions/pretty-html-log/commit/112b62a448f96a31b64434974a5892bd13cfe5bb))
+* 🐛 (globals) remove wrong globals documentation ([8bc9ca7](https://github.com/angular-extensions/pretty-html-log/commit/8bc9ca79bee6ffc98476cad03987432a26c82792))
+
 ## [5.0.1](https://github.com/angular-extensions/pretty-html-log/compare/v5.0.0...v5.0.1) (2022-01-12)
 
 

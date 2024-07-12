@@ -15,6 +15,8 @@
 - [Getting started](#getting-started)
   - [Installation](#installation)
   - [Usage](#usage)
+    - [Usage via import](#usage-via-import)
+    - [Usage via globals](#usage-via-globals)
 - [API](#api)
 - [Examples](#examples)
   - [Pass in specific DebugElement](#pass-in-specific-debugelement)
@@ -62,7 +64,7 @@ npm i -D @angular-extensions/pretty-html-log
 pretty-html-log can be used in two different ways. The first and most
 simple way is to simply import the `phl` function into your test.
 
-### Usage via import
+#### Usage via import
 
 The `@angular-extensions/pretty-html-log` package provides a `phl` method that you can use to pretty print a `fixture`, `debugElement`, `nativeElement` or even a plain HTML string. Simply import it while debugging and pretty print that HTML.
 
@@ -81,7 +83,9 @@ Importing the phl function is straightforward. However, since phl is often used 
 
 Wouldn't it be cool if we can simply use the `phl` function without the need of an import. Let's check out how to setup the `phl` function globally.
 
-### Usage via globals
+> To make sure unused import statement get cleaned up we should configure our eslint to clean up unused imports. More: https://www.npmjs.com/package/eslint-plugin-unused-imports.
+
+#### Usage via globals
 
 To make `phl` globally available, import and run the following method within a `jest.setup.ts` file.
 
@@ -90,8 +94,6 @@ import { setupPhl } from '@angular-extensions/pretty-html-log';
 
 setupPhl();
 ```
-
-> Note that this way adds a import method. To make sure this import statement gets cleaned up we should configure our eslint to clean up unused imports. More: https://www.npmjs.com/package/eslint-plugin-unused-imports.
 
 ## API
 

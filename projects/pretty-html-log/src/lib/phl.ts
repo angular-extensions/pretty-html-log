@@ -13,6 +13,7 @@ import {
 } from './prettiers/htmlElement/pretty-htmlelement';
 import { removeComments } from './prettiers/prettier-util';
 
+export { THEMES };
 export type NgHTMLElement<T> =
   | ComponentFixture<T>
   | DebugElement
